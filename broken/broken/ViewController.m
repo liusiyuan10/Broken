@@ -9,6 +9,7 @@
 #import "JXCircleModel.h"
 #import "JXCircleRatioView.h"
 #import "LKDrawLineChart.h"
+#import "LKLineRatioView.h"
 
 #define PIE_HEIGHT  250
 #define Radius 75 //圆形比例图的半径
@@ -18,6 +19,9 @@
 
 
 @property(nonatomic, strong) JXCircleRatioView *circleView_one;
+
+
+@property(nonatomic, strong) LKLineRatioView *lineView_one;
 
 @property(nonatomic, strong) NSMutableArray *data1;
 
@@ -63,6 +67,22 @@
     return _circleView_one;
 }
 
+- (LKLineRatioView *)lineView_one{
+    if (!_lineView_one) {
+        
+//        _circleView_one = [[JXCircleRatioView alloc]initWithFrame:CGRectMake(0, 104, self.view.bounds.size.width, PIE_HEIGHT)  andDataArray:self.data1 CircleRadius:Radius];
+        _lineView_one = [[LKLineRatioView alloc]initWithFrame:CGRectMake(10, 300, 300, 20)  andDataArray:self.data1];
+        _lineView_one.backgroundColor = [UIColor whiteColor];
+////        _lineView_one.layer.cornerRadius = 2.5;
+//        _lineView_one.layer.cornerRadius = 7.5;
+////        
+//        _lineView_one.layer.masksToBounds = YES;
+//        
+    }
+    return _lineView_one;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -71,7 +91,22 @@
     //添加圆形比例图
     [self.view addSubview:self.circleView_one];
     
+    [self.view addSubview:self.lineView_one];
+    
     [self drawNewChart];
+    
+    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+    UIImage *image = [UIImage imageNamed:@"tupian.jpg"];
+    textAttachment.image = image;
+    textAttachment.bounds = CGRectMake(0, 0, image.size.width/image.scale, image.size.height/image.scale);
+    
+    NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:@"梅西去了伊比萨高端夜店lio Ibiza。结果在夜店中，梅西偶遇纳达尔。按照TyC电视台的说法，梅西和纳达尔进行了“简单但友好”的对话，并且进行了合影。尽管纳达尔是皇马死忠球迷，但他和梅西仍然惺惺相惜。\n" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+    [attri appendAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 320, 400, 200)];
+    label.numberOfLines = 0;
+    label.attributedText = attri;
+    [self.view addSubview:label];
 }
 
 - (void )drawNewChart{
@@ -91,6 +126,9 @@
 //    chartView.titleArray = @[@"收缩压",@"舒张压",@"心率"];
     
     [self.view addSubview:chartView];
+    
+    
+    
 }
 
 

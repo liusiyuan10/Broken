@@ -170,31 +170,31 @@ static CGFloat const foldLineWidth = 10.0;
                    andY:(CGFloat)y
                  andInt:(int)n
                  angele:(CGFloat)angele{
-    
+
     // 1.小圆的圆心
     CGFloat smallCircleCenterPointX = x;
     CGFloat smallCircleCenterPointY = y;
-    
-    
+
+
 
     // 4.数字的起点
     CGFloat numberStartX;
     CGFloat numberStartY;
-    
+
     // 5.文字的起点
     CGFloat textStartX;
     CGFloat textStartY;
-    
+
     // 6.数字的长度
     JXCircleModel *model = self.dataArray[n];
     NSString *number = model.number;
     CGSize numberSize = [number sizeWithAttributes:@{
                                                      NSFontAttributeName:[UIFont systemFontOfSize:16.0]
                                                      }];
-    
+
     // 文字size
     CGSize textSize = [model.name sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:nameTextFont]}];
-    
+
 
 //
 //    // 7.画小圆
@@ -226,16 +226,16 @@ static CGFloat const foldLineWidth = 10.0;
 //        textStartY = lineEndPointY;
 //
 //    }
-    
+
     // 文字
     textStartX = smallCircleCenterPointX + 5;
     textStartY = smallCircleCenterPointY - smallCircleRadius;
-    
+
     // 数字
     numberStartX = textStartX  + textSize.width;
     numberStartY = textStartY;
-    
-    
+
+
     // 8.画小圆
     /*!创建圆弧
      参数：
@@ -245,15 +245,15 @@ static CGFloat const foldLineWidth = 10.0;
      endAngle->结束为止
      clockwise->是否顺时针方向
      */
-    
+
     UIBezierPath *arcPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(smallCircleCenterPointX, smallCircleCenterPointY) radius:smallCircleRadius startAngle:0 endAngle:M_PI * 2 clockwise:YES];
-    
+
     [color set];
     // 填充
     [arcPath fill];
     // 描边，路径创建需要描边才能显示出来
     [arcPath stroke];
-    
+
 //    // 9.画指引线
 //    CGContextBeginPath(ctx);
 //
@@ -264,20 +264,91 @@ static CGFloat const foldLineWidth = 10.0;
 //    //填充颜色
 //    CGContextSetFillColorWithColor(ctx , color.CGColor);
 //    CGContextStrokePath(ctx);
-    
+
     // 10.画指引线上的数字
      [model.number drawAtPoint:CGPointMake(numberStartX, numberStartY) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0],NSForegroundColorAttributeName:color}];
-    
+
     // 11.画指引线下的文字
     // 11.1设置段落风格
     NSMutableParagraphStyle * paragraph = [[NSMutableParagraphStyle alloc]init];
     paragraph.alignment = NSTextAlignmentRight;
-    
-    
+
+
     [model.name drawInRect:CGRectMake(textStartX, textStartY, textSize.width, textSize.height) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:nameTextFont],NSForegroundColorAttributeName:color,NSParagraphStyleAttributeName:paragraph}];
-    
-    
+
+
 }
+
+/**
+ * @color 颜色
+ * @ctx CGContextRef
+ * @x 小圆的中心点的x
+ * @y 小圆的中心点的y
+ * @n 表示第几个弧行
+ * @angele 弧度的中心角度
+ */
+
+////画线
+//-(void)addLineAndnumber:(UIColor *)color
+//        andCGContextRef:(CGContextRef)ctx
+//                   andX:(CGFloat)x
+//                   andY:(CGFloat)y
+//                 andInt:(int)n
+//                 angele:(CGFloat)angele{
+//
+//    // 1.小圆的圆心
+//    CGFloat smallCircleCenterPointX = x;
+//    CGFloat smallCircleCenterPointY = y;
+//
+//
+//    // 2.折点
+//    CGFloat lineLosePointX = 0.0 ; //指引线的折点
+//    CGFloat lineLosePointY = 0.0 ; //
+//
+//    // 3.指引线的终点
+//    CGFloat lineEndPointX ; //
+//    CGFloat lineEndPointY ; //
+//
+//
+//    // 设置折点
+//    lineLosePointX = smallCircleCenterPointX + foldLineWidth * cos(angele);
+//    lineLosePointY = smallCircleCenterPointY + foldLineWidth * sin(angele);
+//
+//    // 7.画小圆
+//    if (smallCircleCenterPointX > self.bounds.size.width * 0.5) {
+//
+//        // 指引线终点
+//        lineEndPointX = lineLosePointX + lineWidth;
+//        lineEndPointY = lineLosePointY;
+//
+//
+//
+//    }else{
+//
+//        // 指引线终点
+//        lineEndPointX = lineLosePointX - lineWidth;
+//        lineEndPointY = lineLosePointY;
+//
+//
+//    }
+//
+//
+//
+//    // 9.画指引线
+//    CGContextBeginPath(ctx);
+//
+//    CGContextMoveToPoint(ctx, smallCircleCenterPointX, smallCircleCenterPointY);
+//
+//    CGContextAddLineToPoint(ctx, lineLosePointX, lineLosePointY);
+//    CGContextAddLineToPoint(ctx, lineEndPointX, lineEndPointY);
+//    CGContextSetLineWidth(ctx, 5);
+//
+//    //填充颜色
+//    CGContextSetFillColorWithColor(ctx , color.CGColor);
+//    CGContextStrokePath(ctx);
+//
+//
+//}
 
 ///**
 // * @color 颜色

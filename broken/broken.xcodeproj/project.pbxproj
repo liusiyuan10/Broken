@@ -21,6 +21,7 @@
 		C71A1F662560E144005E82CE /* LKDrawLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C71A1F652560E144005E82CE /* LKDrawLineChart.m */; };
 		C71A1F6E2560E4B8005E82CE /* LF_drawLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C71A1F6A2560E4B8005E82CE /* LF_drawLineChart.m */; };
 		C71A1F6F2560E4B8005E82CE /* LF_drawMonthLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C71A1F6D2560E4B8005E82CE /* LF_drawMonthLineChart.m */; };
+		C799DD35257336CE00A2C0A1 /* LKLineRatioView.m in Sources */ = {isa = PBXBuildFile; fileRef = C799DD34257336CE00A2C0A1 /* LKLineRatioView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		C71A1F6B2560E4B8005E82CE /* LF_drawMonthLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LF_drawMonthLineChart.h; sourceTree = "<group>"; };
 		C71A1F6C2560E4B8005E82CE /* LF_drawLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LF_drawLineChart.h; sourceTree = "<group>"; };
 		C71A1F6D2560E4B8005E82CE /* LF_drawMonthLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LF_drawMonthLineChart.m; sourceTree = "<group>"; };
+		C799DD33257336CE00A2C0A1 /* LKLineRatioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKLineRatioView.h; sourceTree = "<group>"; };
+		C799DD34257336CE00A2C0A1 /* LKLineRatioView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKLineRatioView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				C71A1F592560DE73005E82CE /* JXCircleModel.m */,
 				C71A1F5E2560DE7D005E82CE /* JXCircleRatioView.h */,
 				C71A1F5F2560DE7D005E82CE /* JXCircleRatioView.m */,
+				C799DD33257336CE00A2C0A1 /* LKLineRatioView.h */,
+				C799DD34257336CE00A2C0A1 /* LKLineRatioView.m */,
 				C71A1F642560E144005E82CE /* LKDrawLineChart.h */,
 				C71A1F652560E144005E82CE /* LKDrawLineChart.m */,
 				C71A1F222560DDA9005E82CE /* SceneDelegate.h */,
@@ -298,6 +303,7 @@
 				C71A1F212560DDA9005E82CE /* AppDelegate.m in Sources */,
 				C71A1F322560DDAA005E82CE /* main.m in Sources */,
 				C71A1F662560E144005E82CE /* LKDrawLineChart.m in Sources */,
+				C799DD35257336CE00A2C0A1 /* LKLineRatioView.m in Sources */,
 				C71A1F6E2560E4B8005E82CE /* LF_drawLineChart.m in Sources */,
 				C71A1F242560DDA9005E82CE /* SceneDelegate.m in Sources */,
 			);
