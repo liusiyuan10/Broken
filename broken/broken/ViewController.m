@@ -107,6 +107,8 @@
     label.numberOfLines = 0;
     label.attributedText = attri;
     [self.view addSubview:label];
+    
+     
 }
 
 - (void )drawNewChart{
@@ -130,6 +132,19 @@
     
     
 }
+
+- (BOOL)checkNum:(NSString *)str
+{
+    NSString *regex = @"^[1-9]d*|0$";// ^[0-9]+(.[0-9]{2})?$
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:str];
+    if (!isMatch) {
+    //[self showHint:@"价格只能输入数字"];
+    return NO;
+    }
+    return YES;
+}
+
 
 
 @end
